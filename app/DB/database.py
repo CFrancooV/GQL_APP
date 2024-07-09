@@ -2,14 +2,11 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from app.DB.models import User,Base,Employer,Job,JobApplication
 from app.DB.data import employers_data,jobs_data,user_data,applications_data
-from dotenv import load_dotenv
-import os
+from app.Settings.config import DB_URL
 
-load_dotenv()
-DB_URL = os.getenv("DB_URL")
+print(DB_URL)
 
-
-engine = create_engine(DB_URL,echo=False) # Start the engine using the Database URL
+engine = create_engine(DB_URL) # Start the engine using the Database URL
 Session = sessionmaker(bind=engine)
 
 
