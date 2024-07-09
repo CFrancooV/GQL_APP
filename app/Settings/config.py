@@ -17,7 +17,9 @@ def get_secret():
     session = boto3.session.Session()
     client = session.client(
         service_name='secretsmanager',
-        region_name=region_name
+        region_name=region_name,
+        aws_access_key_id=os.getenv("AWS_ACCESS_KEY_ID"),
+        aws_secret_access_key=os.getenv("AWS_SECRET_ACCESS_KEY")
     )
 
     try:
